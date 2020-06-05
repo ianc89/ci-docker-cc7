@@ -1,4 +1,4 @@
-FROM atlas/cc7-atlasos
+FROM atlas/centos7-atlasos
 RUN yum install -y \
     python-virtualenv \
     python-pip \
