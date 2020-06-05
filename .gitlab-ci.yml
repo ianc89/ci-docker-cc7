@@ -1,0 +1,21 @@
+stages:
+  - docker
+  - test
+
+build_image:
+  stage: docker
+  tags:
+    - docker-image-build
+  script:
+    - echo "Building image"
+  variables:
+    TO: gitlab-registry.cern.ch/iconnell/ci-docker-cc7
+    DOCKER_FILE: Dockerfile
+
+test_image:
+  image: gitlab-registry.cern.ch/iconnell/ci-docker-cc7
+  tags:
+    - cvmfs
+    - docker
+  script:
+    - sh ci-test.sh
